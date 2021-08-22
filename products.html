@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <!--The links for the font start-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <!--The links for the font end-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="style/modal.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<!-- aceste functii se apeleaza atunci cand se deschide pagina  -->
+<body onload="authorize(), showProducts(), updateProductsCount()">
+    <!-- Modal -->
+<div class="container">
+    <div class="row">
+<div class="modal fade" id="exampleModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-title-id"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="modal-body-id">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-danger" id="action-button-id"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</br> </br>
+<div class="row">
+    <nav class="NavigationBar navbar navbar-expand-md navbar-dark fixed-top">
+        <div class="container-fluid">
+            <div class="pagesAndLogo d-flex flex-wrap">
+             <a class="navbar-brand" href="#">Tech Void</a>
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
+             <span class="navbar-toggler-icon"></span> </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="register.html">Register</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link active" aria-current="page" href="#">Products</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="addProduct.html">Add Product</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" aria-current="page" href="profile.html">My Profile</a>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="#" onclick="logOut()">Log out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+                <div class="buttonSection d-flex">
+                <button type="button" class="btn btn-primary mx-2 cartButton" onclick="openCartItems()">
+                    Cart items <span id = "cartItemsId" class="badge bg-secondary mx-1"></span>
+                </button>
+                <button type="button" class="btn btn-primary mx-2 favoritesButton" onclick="openFavoriteItems()">
+                    Favorites <span id = "favoritesItemsId" class="badge bg-secondary mx-1"></span>
+                </button>
+                </div>
+        </div>
+    </nav>
+</div>
+<div class="row">
+  <div class="infoMessageRow d-flex align-items-center justify-content-center">
+    <p id="messageBarId" class="productCount"></p>
+  </div>
+</div>
+
+<div class="row">
+    <div class="filterSearchBars justify-content-center" id="searchBar">
+        <div class="nameSearchBar">
+          <input type="search" id ="search-bar-id" placeholder="Enter the name of your product">
+          <button class="btn searchButton" onclick="searchProducts()" id="button-addon2">Search</button>
+        </div>
+
+        <div class="priceSearchBar">
+          <input id = "search-bar-pricemin-id" type="number" placeholder="Min Price">
+          <input id = "search-bar-pricemax-id" type="number" placeholder="Max Price">
+          <button onclick="searchProductsByPrice()" class="btn searchButton" type="button" id="button-addon2">Search</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <h2 class="productCountMessage d-flex justify-content-center mt-5" id="productCountId"></h2>
+</div> 
+        <div class="row productsListRow" id="productsListId">
+            <!-- aici o sa fie adaugate produsele -->
+        </div>
+    <div class="row">
+      <div class="additionalButtons">
+        <button class="btn btn-danger" onclick="removeAllFromCart()">Remove all items from cart</button>
+        <button class="btn btn-danger" onclick="removeAllFromFavorites()">Remove all items from favorites</button>
+      </div>
+    </div>
+</div>
+
+    <!-- <button onclick="logOut()">LogOut</button> -->
+    <link href="style/modal.css" rel="stylesheet">
+    <link href="style/products.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="script/user.js"></script>
+    <script src="script/product.js"></script>
+    <script src="script/userService.js"></script>
+    <script src="script/productService.js"></script>
+    <script src="script/commonService.js"></script>
+    <script src="script/httpService.js"></script>
+    <script src="script/script.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+</body>
+</html>

@@ -1,0 +1,36 @@
+body {
+    width: 99%;
+    height: 99%;
+    background-color: #0F0F0F;
+    color: whitesmoke;
+}
+
+input[type="text"] {
+    color: #0F0F0F;
+    font-weight: bolder;
+}
+label {
+    color: #0F0F0F;
+    font-weight: bolder;
+}
+
+form {
+    border: 3px solid black;
+}
+.navbar-brand {
+    background-color: #CA4246;
+    background-image: linear-gradient(to right, #e67095, #4b5bec);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.NavigationBar {
+    background-color: #131313;
+    border-radius: 1px solid #0F0F0F;
+    height: 8%;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+

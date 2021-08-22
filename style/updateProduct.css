@@ -1,0 +1,71 @@
+body {
+    width: 99%;
+    height: 99%;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+    background-image: url(https://cdnb.artstation.com/p/assets/images/images/024/538/889/large/pixel-jeff-rog-demo1.jpg?1582740646);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+}
+img {
+    width: 100%;
+    height: auto;
+}
+
+.infoSection {
+    min-height: 50px;
+}
+.formTitle {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color:chartreuse;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.productForm {
+    display: grid;
+    grid-gap: 0px;
+    background-color: black;
+    margin-top: 150px;
+    padding: 15px 8px;
+    border: 5px solid black;
+    border-radius: 5px;
+}
+.buttonSection {
+    margin-top: 45px;
+}
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 80px;
+    color: chartreuse;
+    font-weight: bolder;
+    font-style: italic;
+    background-color: #0F0F0F;
+    border: 2px solid chartreuse;
+    margin-bottom: 5px;
+}
+
+button:hover {
+    background-color: chartreuse;
+    color: #0F0F0F;
+    border: 3px solid #0F0F0F;
+}
+input {
+    border: 0.2px solid chartreuse;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #0F0F0F;
+    color: chartreuse;
+}
+input::placeholder {
+    color: chartreuse;
+}
